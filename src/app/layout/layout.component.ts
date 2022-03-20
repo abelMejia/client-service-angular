@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatDrawer } from '@angular/material/sidenav/drawer';
 
 @Component({
   selector: 'app-layout',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LayoutComponent implements OnInit {
 
-  constructor() { }
+    @ViewChild('drawer') drawer!: MatDrawer;
+    constructor() {}
 
-  ngOnInit(): void {
-  }
+    ngOnInit(): void {
+        console.log('this', this);
+    }
+
+    ngAfterViewInit(): void {
+        this.drawer.toggle(); 
+    }
 
 }
