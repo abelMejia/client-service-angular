@@ -1,0 +1,27 @@
+<mat-list>
+    <div mat-subheader>Products</div>
+    <mat-list-item *ngFor="let product of (products$ | async)">
+      <mat-icon matListItemIcon>note</mat-icon>
+      <div matListItemTitle>{{product?.title}}</div>
+      <div matListItemLine>{{product.category}}</div>
+    </mat-list-item>
+</mat-list>
+
+<hr>
+Producto actual
+<div>{{(currentProducts$ | async)?.title}}</div>
+<div>{{(currentProducts$ | async)?.category}}</div>
+
+<hr>
+<mat-list>
+  <div mat-subheader>Products Encontrados</div>
+  <mat-list-item *ngFor="let product of (productSearch$ | async)">
+    <mat-icon matListItemIcon>note</mat-icon>
+    <div matListItemTitle>{{product?.title}}</div>
+    <div matListItemLine>{{product.category}}</div>
+  </mat-list-item>
+</mat-list>
+
+<router-outlet></router-outlet>
+
+
