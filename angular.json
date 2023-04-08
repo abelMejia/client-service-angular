@@ -13,6 +13,13 @@
           "strict": true
         }
       },
+      "i18n": {
+        "sourceLocale": "es",
+        "locales": {
+            "fr": "src/locale/messages.fr.xlf",
+            "en": "src/locale/messages.en.xlf"
+        }
+      },
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
@@ -20,6 +27,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "localize": ["es"],
             "outputPath": "dist/first-party-libraries",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -64,6 +72,16 @@
               "extractLicenses": false,
               "sourceMap": true,
               "namedChunks": true
+            },
+            "fr": {
+              "localize": [
+                "fr"
+              ]
+            },
+            "en": {
+              "localize": [
+                "en"
+              ]
             }
           },
           "defaultConfiguration": "production"
@@ -76,6 +94,12 @@
             },
             "development": {
               "browserTarget": "first-party-libraries:build:development"
+            },
+            "fr": {
+              "browserTarget": "first-party-libraries:build:fr"
+            },
+            "en": {
+              "browserTarget": "first-party-libraries:build:en"
             }
           },
           "defaultConfiguration": "development"

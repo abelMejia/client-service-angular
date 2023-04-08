@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { typeWithParameters } from '@angular/compiler/src/render3/util';
+import { Component, EventEmitter, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HeroService } from '../hero.service';
 import { HEROES } from '../mock-heroes';
+import { NewsletterService } from '../newsletter/newsletter.service';
 import { Hero } from '../shared/interfaces/hero';
 
 @Component({
@@ -18,7 +20,9 @@ export class HeroesComponent implements OnInit {
     heroes$?: Observable<Hero[]>;
     selectedHero?: Hero;
 
-    constructor(private heroService: HeroService) { }
+    constructor(
+        private heroService: HeroService
+    ) { }
 
     ngOnInit(): void {
         this.getHeroes();
