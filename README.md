@@ -1,6 +1,8 @@
 # Settings
-1. Go to the `src/environments/environment.ts` 
-2. Set apiEndpoint and serverBaseUrl variables.
+1. If `src/environments/` directory doesn't exist you can create it using the next doc.
+[Building and serving Angular apps](https://angular.io/guide/build#configure-environment-specific-defaults)
+2. Go to the `src/environments/environment.development.ts` 
+3. Set apiEndpoint and serverBaseUrl variables.
 ```
   export const environment = {
       ....
@@ -16,6 +18,12 @@
     products$!: Observable<Product[]>;
     productSearch$!: Observable<Product[]>;
 ```
+
+- Injecting a dependency
+``` 
+    constructor(private productService: ProductService) {}
+```
+
 -  Assignments
 ```
     this.products$ = this.productService.getAll().pipe(map(it => it?.products.slice(0, 5) ));
@@ -28,7 +36,7 @@
 
 2. Insert the below code in your `component's template`
 ```
-    <div class"mat-list">
+    <div class="mat-list">
         <div class="mat-subheader">Products</div>
         <div class="mat-list-item" *ngFor="let product of (products$ | async)">
             <div  class="matListItemTitle">{{product?.title}}</div>
