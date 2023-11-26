@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpEvent, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { environment } from 'src/environments/environment';
+import { environment } from 'src/environments/environment.development';
 import { Options } from '../interfaces/options.interface';
 
 const baseUrl = environment.serverBaseUrl;
@@ -20,7 +20,7 @@ export class ClientService {
     get<T>(
         serviceEndpoint: string,
         id?: number | undefined,
-        options?: Options): Observable<HttpEvent<T>> {
+        options?: Options): Observable<any> {
 
         this.apiUrl = `${baseUrl}`;
 
@@ -31,7 +31,7 @@ export class ClientService {
 
     }
 
-    post<T>(serviceEndpoint: any, item?: T, options?: any): Observable<ArrayBuffer> {
+    post<T>(serviceEndpoint: any, item?: T, options?: any): Observable<any> {
 
         this.apiUrl = `${baseUrl}`;
 
@@ -53,7 +53,7 @@ export class ClientService {
       serviceEndpoint: string,
       id?: number|string,
       options?: any
-    ): Observable<HttpEvent<T>> {
+    ): Observable<any> {
         this.apiUrl = `${baseUrl}`;
         const defaultOptions = this.getDefaultHeaders();
         let endpoint = `${this.apiUrl}${serviceEndpoint}`; // apiUrl contains the slash
@@ -68,7 +68,7 @@ export class ClientService {
       item?: T,
       id?: number,
       options?: any
-    ): Observable<ArrayBuffer> {
+    ): Observable<any> {
         this.apiUrl = `${baseUrl}`;
 
         let url = `${this.apiUrl}${serviceEndpoint}`;

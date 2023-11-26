@@ -2,6 +2,7 @@ import { HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import {  Observable } from 'rxjs';
 import { ClientService } from '../client.service';
+import { Product } from '../../interfaces/products/product.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -9,15 +10,15 @@ import { ClientService } from '../client.service';
 export class ProductService {
     constructor(private clientService: ClientService) { }
 
-    getAll(): Observable<any> {
+    getAll(): Observable<Product[]> {
         return this.clientService.get('products');
     }
 
-    getById(productId: number): Observable<any> {
+    getById(productId: number): Observable<Product> {
         return this.clientService.get('products', productId);
     }
 
-    search(params: HttpParams): Observable<any> {
+    search(params: HttpParams): Observable<Product[]> {
         return this.clientService.get('products', undefined, { params });
     }
 
